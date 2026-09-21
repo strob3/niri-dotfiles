@@ -1,0 +1,1 @@
+/home/yien/.p10k.zsh
