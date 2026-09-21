@@ -1,0 +1,30 @@
+@theme "~/.config/rofi/noctalia.rasi"
+
+/* Global defaults */
+* {
+  font: "JetBrainsMono Nerd Font 12";
+  padding: 0px;
+  margin: 0px;
+  background-color: transparent;
+  border-radius: 0px;
+}
+
+configuration {
+    modi: "drun,run";                    
+    show-icons: true;                    
+}
+
+/* ── Default Inputbar Components ─────────── */
+prompt {
+  enabled: false;
+}
+
+num-filtered-rows, num-rows, textbox-num-sep {
+  enabled: false;
+}
+
+case-indicator {
+  enabled: false;
+}
+
+

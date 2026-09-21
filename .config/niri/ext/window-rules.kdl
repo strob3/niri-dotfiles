@@ -1,0 +1,35 @@
+window-rule {
+  geometry-corner-radius 12
+
+  // Clips window contents to the rounded corner boundaries.
+  clip-to-geometry true
+}
+
+window-rule {
+  match app-id="dev.noctalia.Noctalia"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}
+
+debug {
+  honor-xdg-activation-with-invalid-serial
+}
+
+
+
+// overview layer rules
+layer-rule {
+  match namespace="^noctalia-wallpaper"
+  place-within-backdrop true
+}
+
+layout {
+  background-color "transparent"
+}
+
+overview {
+  workspace-shadow {
+    off
+  }
+}
