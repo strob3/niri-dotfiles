@@ -1,0 +1,237 @@
+# noctalia settings // exported on 9/21/26
+# private info marked with [*********]
+
+[audio]
+enable_overdrive = true
+
+[bar]
+order = [ "default", "side" ]
+
+    [bar.default]
+    capsule_padding = 10.0
+    center = [ "audio_visualizer", "clock", "date", "weather" ]
+    end = [ "widget", "status", "tray", "todo", "notifications", "clipboard", "volume", "battery", "network", "session" ]
+    shadow = false
+    start = [ "launcher", "workspaces", "media" ]
+    widget_spacing = 12
+
+    [bar.side]
+    center = [ "clock", "audio_visualizer" ]
+    enabled = false
+    margin_edge = 8
+    margin_ends = 8
+    position = "left"
+    shadow = false
+    start = [ "launcher", "workspaces", "media" ]
+    widget_spacing = 10
+
+[battery]
+warning_threshold = 15
+
+[brightness]
+minimum_brightness = 0.099999997764825821
+
+[control_center]
+hidden_tabs = [ "monitor", "power", "network", "bluetooth", "screen-time" ]
+width = 900
+
+[location]
+address = "*********"
+
+[lockscreen]
+blur_intensity = 0.24999999441206455
+fingerprint = false
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-widget-0000000000000001", "lockscreen-widget-0000000000000002" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 32
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 830.0
+    output = "HDMI-A-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "compact"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = false
+        show_weather = false
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 192.0
+    box_width = 416.0
+    cx = 960.0
+    cy = 316.0
+    output = "HDMI-A-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background = false
+        background_opacity = 0.59999999999999998
+        clock_style = "digital"
+        shadow = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 128.0
+    box_width = 288.0
+    cx = 960.0
+    cy = 700.0
+    output = "HDMI-A-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "media_player"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        hide_when_no_media = true
+        layout = "horizontal"
+
+[notification]
+scale = 0.80000000447034836
+
+[osd]
+background_opacity = 0.99999997764825821
+
+    [osd.kinds]
+    media = false
+
+[plugin_settings."ashur-d/wallpaper-widget"]
+wallpaper_dir = "/home/yien/Pictures/Wallpapers"
+
+[plugin_settings."nightwatch75/todo"]
+panel_placement = "floating"
+
+[plugin_settings."strob3/dnf-updater"]
+panel_open_near_click = true
+panel_position = "top_right"
+
+[plugins]
+enabled = [ "nightwatch75/todo", "noctalia/notes", "thepunkoff/pomodoro", "strob3/dnf-updater" ]
+
+    [[plugins.source]]
+    kind = "git"
+    location = "https://github.com/noctalia-dev/official-plugins"
+    name = "official"
+
+    [[plugins.source]]
+    kind = "git"
+    location = "https://github.com/noctalia-dev/community-plugins"
+    name = "community"
+
+# dev source // necessary only for development of dnf-updater
+    [[plugins.source]]
+    kind = "path"
+    location = "/home/yien/Projects/noctalia-dev-source"
+    name = "dev"
+
+[shell]
+avatar_path = "*********"
+corner_radius_scale = 0.80000001192092896
+font_family = "Inter Medium"
+popup_shadows = false
+
+    [shell.panel]
+    open_near_click_control_center = true
+
+    [shell.screenshot]
+    directory = "/home/yien/Pictures"
+
+    [shell.shadow]
+    alpha = 0.0
+
+[theme]
+community_palette = "Catppuccin Mocha Pink"
+source = "wallpaper"
+
+    [theme.templates]
+    builtin_ids = [ "btop", "cava", "gtk3", "gtk4", "kitty", "niri", "qt" ]
+    community_ids = [ "vscode", "rofi", "fastfetch", "yazi" ]
+
+[wallpaper]
+directory = "/home/yien/Pictures/Wallpapers"
+
+    [wallpaper.default]
+    path = "/home/yien/Pictures/Wallpapers/gargantua.jpg"
+
+    [wallpaper.last]
+    path = "/home/yien/Pictures/Wallpapers/gargantua.jpg"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "/home/yien/Pictures/Wallpapers/gargantua.jpg"
+
+[widget.audio_visualizer]
+bands = 12
+enabled = false
+
+[widget.date]
+format = "{:%a %b %d}"
+
+[widget.launcher]
+custom_image = "/usr/share/icons/oxygen/256x256/places/start-here-kde-fedora.png"
+custom_image_colorize = true
+glyph = "rocket"
+icon_color = "primary"
+scale = 1.1500000000000001
+
+[widget.media]
+artist_first = true
+hide_album_art = true
+hide_when_no_media = true
+max_length = 300
+min_length = 20
+title_scroll = "on_hover"
+
+[widget.network]
+show_label = false
+
+[widget.status]
+type = "tordex/system-updater:status"
+
+[widget.todo]
+type = "nightwatch75/todo:todo"
+
+[widget.volume]
+show_label = false
+
+[widget.wallpaper]
+glyph = "image"
+
+[widget.weather]
+show_condition = false
+
+[widget.widget]
+type = "strob3/dnf-updater:widget"
+
+[widget.widget_2]
+type = "strob3/dnf-updater:widget"
+
+[widget.workspaces]
+active_pill_size = 2.25
+change_color_on_hover = false
+pill_scale = 0.80000000000000004
+show_labels = false
