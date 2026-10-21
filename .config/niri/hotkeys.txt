@@ -1,0 +1,45 @@
+[Applications]
+Mod + T           | Terminal (Kitty)
+Mod + Space       | App Launcher (Rofi)
+Mod + C           | VS Code
+Mod + E           | File Manager (Nautilus)
+Mod + B           | Browser (Zen)
+Mod + Y           | Terminal FM (Yazi)
+
+[Noctalia Panels]
+Mod + I           | Settings Toggle
+Mod + S           | Control Center
+Mod + W           | Wallpaper Picker
+Mod + Shift + B   | Toggle Top Bar
+Mod + X           | Session Menu (Power)
+Mod + Shift + N   | Notes Panel
+Mod + V           | Clipboard History
+Mod + D           | Toggle Desktop Widgets
+
+[Navigation & Windows]
+Mod + Tab         | Workspace Overview
+Mod + Q           | Close Window
+Mod + Arrows      | Focus Column / Window
+Mod + Ctrl + Arr  | Move Column / Window
+Mod + 1 - 9       | Switch Workspace 1 - 9
+Mod + Shift + 1-9 | Move to Workspace 1 - 9
+Mod + Ctrl+Sh+Arr | Move to Other Monitor
+
+[Layout & Resizing]
+Mod + F           | Maximize Column
+Mod + Shift + F   | Fullscreen Window
+Mod + M           | Maximize to Edges
+Mod + Ctrl + F    | Expand to Full Width
+Mod + Shift + C   | Center Column
+Mod + Shift + V   | Toggle Floating
+Mod + Ctrl + V    | Focus Floating / Tiling
+Mod + [ / ]       | Consume / Expel Window
+Mod + Shift + Arr | Resize Width / Height
+Mod + Ctrl + R    | Reset Window Height
+Mod + O           | Toggle Opacity Rule
+
+[Screenshots & System]
+Print             | Area Screenshot
+Ctrl + Print      | Fullscreen Screenshot
+Alt + Print       | Window Screenshot
+Mod + Shift + E   | Quit Niri Dialog

@@ -1,0 +1,2 @@
+What's this?
+- Local plugin for noctalia bar that displays current fcitx input mode.

@@ -4,6 +4,7 @@ config-notification {
     disable-failed
 }
 
+// windows title bar decorations
 prefer-no-csd
 
 
@@ -21,9 +22,10 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // displays
 
 // internal display
-//output "eDP-1" {
+output "eDP-1" {
     // uncomment line to disable this output.
-    // off
+    off
+}
 
 
 // external monitor output

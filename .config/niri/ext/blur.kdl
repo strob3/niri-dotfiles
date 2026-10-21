@@ -1,7 +1,7 @@
 window-rule {
 
   // global transparency
-  opacity 0.85
+  opacity 0.75
 
   background-effect {
     blur true
@@ -12,8 +12,8 @@ window-rule {
 blur {
   passes 3        // more passes = stronger blur (default: 3)
   offset 3.0      // sample distance per pass (default: 3.0)
-  noise 0.03      // grain overlay (default: 0.02)
-  saturation 1.0  // color saturation boost (default: 1.5)
+  noise 0      // grain overlay (default: 0.02)
+  saturation 1.1  // color saturation boost (default: 1.5)
 }
 
 

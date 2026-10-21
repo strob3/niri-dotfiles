@@ -1,22 +1,27 @@
 binds {
     
-    Mod+Slash { show-hotkey-overlay; }
+    Mod+Slash hotkey-overlay-title="show hotkeys cheatsheet" { spawn "~/.config/niri/scripts/hotkeys.sh"; }
 
     // Programs
-    Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+Space { spawn-sh "pkill rofi || rofi -show drun -theme ~/.config/rofi/theme.rasi"; }
-    Mod+C { spawn "code"; }
-    Mod+E { spawn "nautilus"; }
-    Mod+B { spawn "/home/yien/.local/share/zen/zen"; }
-    Mod+Y { spawn "kitty" "yazi"; }
+    Mod+T hotkey-overlay-title="spawn kitty" { spawn "kitty"; }
+    Mod+Space hotkey-overlay-title="spawn rofi" { spawn-sh "pkill rofi || rofi -show drun -theme ~/.config/rofi/theme.rasi"; }
+    Mod+C hotkey-overlay-title="spawn vs code" { spawn "code"; }
+    Mod+E hotkey-overlay-title="spawn nautilus" { spawn "nautilus"; }
+    Mod+B hotkey-overlay-title="spawn zen" { spawn "~/.local/share/zen/zen"; }
+    Mod+Y hotkey-overlay-title="spawn yazi" { spawn "kitty" "yazi"; }
 
     // Noctalia
-    Mod+I repeat=true { spawn "noctalia" "msg" "settings-toggle"; }
-    Mod+S repeat=true { spawn "noctalia" "msg" "panel-toggle" "control-center"; }
-    Mod+W repeat=true { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
-    Mod+Shift+B { spawn "noctalia" "msg" "bar-toggle"; }
-    Mod+X { spawn "noctalia" "msg" "panel-toggle" "session"; }
-    Mod+Shift+N { spawn "noctalia" "msg" "panel-toggle" "noctalia/notes:panel"; }
+    Mod+I repeat=true hotkey-overlay-title="spawn settings" { spawn "noctalia" "msg" "settings-toggle"; }
+    Mod+S repeat=true hotkey-overlay-title="spawn control center" { spawn "noctalia" "msg" "panel-toggle" "control-center"; }
+    Mod+W repeat=true hotkey-overlay-title="spawn wallpaper picker" { spawn "noctalia" "msg" "panel-toggle" "ashur-d/wallpaper-widget:hub"; }
+    Mod+Shift+B hotkey-overlay-title="toggle bar" { spawn "noctalia" "msg" "bar-toggle"; }
+    Mod+X hotkey-overlay-title="spawn session menu" { spawn "noctalia" "msg" "panel-toggle" "session"; }
+    Mod+Shift+N hotkey-overlay-title="spawn notes" { spawn "noctalia" "msg" "panel-toggle" "noctalia/notes:panel"; } 
+    Mod+V hotkey-overlay-title="spawn clipboard" { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
+    Mod+D hotkey-overlay-title="toggle desktop widgets on & bar off" { spawn "sh" "-c" "noctalia msg desktop-widgets-toggle; noctalia msg bar-toggle"; }
+
+    // niri opacity toggle
+    Mod+O { toggle-window-rule-opacity; }
 
     Mod+Tab repeat=true { toggle-overview; }
     Mod+Q repeat=false { close-window; }
@@ -121,12 +126,12 @@ binds {
     Mod+Shift+Up { set-window-height "-10%"; }
     Mod+Shift+Down { set-window-height "+10%"; }
 
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+Shift+V { toggle-window-floating; }
+    Mod+Ctrl+V { switch-focus-between-floating-and-tiling; }
 
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Print { screenshot show-pointer=false; }
+    Ctrl+Print { screenshot-screen show-pointer=false; }
+    Alt+Print { screenshot-window show-pointer=false; }
 
 
     // The quit action will show a confirmation dialog to avoid accidental exits.

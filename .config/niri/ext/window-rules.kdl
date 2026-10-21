@@ -5,18 +5,24 @@ window-rule {
   clip-to-geometry true
 }
 
+// center settings window
+/*
 window-rule {
   match app-id="dev.noctalia.Noctalia"
   open-floating true
   default-column-width { fixed 1080; }
   default-window-height { fixed 920; }
 }
+*/
 
 debug {
   honor-xdg-activation-with-invalid-serial
 }
 
-
+window-rule {
+    match app-id=".*"
+    opacity 0.75
+}
 
 // overview layer rules
 layer-rule {

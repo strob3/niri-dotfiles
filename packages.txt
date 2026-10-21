@@ -1,0 +1,11 @@
+# Core DNF packages
+niri
+noctalia
+zsh
+neovim
+curl
+git
+fastfetch
+kitty
+rofi
+yazi

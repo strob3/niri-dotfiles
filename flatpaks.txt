@@ -1,0 +1,3 @@
+# Flathub app IDs to install
+# example:
+# org.localsend.localsend_app
