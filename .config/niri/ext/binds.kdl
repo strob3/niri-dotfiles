@@ -1,5 +1,5 @@
 binds {
-    
+      
     Mod+Slash hotkey-overlay-title="show hotkeys cheatsheet" { spawn "~/.config/niri/scripts/hotkeys.sh"; }
 
     // Programs
@@ -22,6 +22,9 @@ binds {
 
     // niri opacity toggle
     Mod+O { toggle-window-rule-opacity; }
+
+    // bar switcher script
+    Mod+Ctrl+B { spawn "~/.local/bin/switch-bar"; }
 
     Mod+Tab repeat=true { toggle-overview; }
     Mod+Q repeat=false { close-window; }

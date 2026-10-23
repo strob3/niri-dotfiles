@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "Updating Fedora packages..."
+sudo dnf upgrade --refresh
+
+echo
+echo "Removing unused Fedora packages..."
+sudo dnf autoremove
+
+echo
+echo "Updating Flatpak packages..."
+flatpak update
+
+echo
+echo "Removing unused Flatpak runtimes..."
+flatpak uninstall --unused
+
+echo
+echo "Done"

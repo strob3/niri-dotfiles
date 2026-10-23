@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+# uses rofi to display a list of hotkeys 
+# defined in hotkeys.txt file
+
 set -euo pipefail
 
 if pkill -x rofi 2>/dev/null; then

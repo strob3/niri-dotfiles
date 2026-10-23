@@ -1,10 +1,23 @@
-# Core DNF packages
+# core pkgs
+zsh
 niri
 noctalia
-zsh
+
+# cli tools
 neovim
 curl
 git
+ripgrep
+fd-find
+wl-clipboard
+zoxide
+bat
+fzf
+eza
+
+# utils
+btop 
+cava
 fastfetch
 kitty
 rofi

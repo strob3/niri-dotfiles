@@ -7,34 +7,54 @@ Personal dotfiles built around niri and noctalia.
 git clone https://github.com/strob3/niri-dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 
-# install core packages & flatpaks (optional)
-./install-packages.sh
+# to include wallpaper repo
+git clone --recurse-submodules https://github.com/strob3/niri-dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 
-# apply dotfiles (symlinks configs and backs up conflicting files)
-./install-dotfiles.sh
+# run setup script
+./setup.sh
+
+# flags
+./setup.sh --dots   # dotfiles symlinks only
+./setup.sh --pkgs   # packages + dotfiles symlinks
 ```
 
 ## Usage 
 
-### 1. Editing Configs
+### Editing Configs
 Configs in `~/.config/` are symlinks to `~/.dotfiles/.config/`.
 ```bash
 nvim ~/.config/niri/config.kdl
 # changes are tracked in ~/.dotfiles
 ```
 
-### 2. Tracking New Configs
+### Tracking New Configs
+
+#### Under `~/.config/` (auto-detected)
 ```bash
-# move folder into dotfiles
+# move config directory into dotfiles repo
 mv ~/.config/foo ~/.dotfiles/.config/
 
-# add "foo" to CONFIG_DIRS array inside install-dotfiles.sh
-# symlink it
-cd ~/.dotfiles
+# apply symlinks (auto-detects all folders in .config/)
 ./install-dotfiles.sh
 ```
 
-### 3. Adding Packages or Flatpaks
+#### Outside `~/.config/` (custom paths like `~/.gitconfig`)
+```bash
+# move file or directory into repo
+mv ~/.gitconfig ~/.dotfiles/.gitconfig
+
+# add entry to CUSTOM_LINKS in install-dotfiles.sh:
+#   CUSTOM_LINKS=(
+#       ".local/share/noctalia:$HOME/.local/share/noctalia"
+#       ".gitconfig:$HOME/.gitconfig"
+#   )
+
+# apply symlinks
+./install-dotfiles.sh
+```
+
+### Adding Packages or Flatpaks
 - Append package name to `packages.txt` or Flathub ID to `flatpaks.txt`.
 - Re-run `./install-packages.sh`.
 
@@ -56,5 +76,3 @@ cd ~/.dotfiles
 ## Keybinds
 
 `Mod + /` to display hotkey overlay script.
-
-

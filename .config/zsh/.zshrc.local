@@ -1,0 +1,11 @@
+# local overrides
+
+# boot windows
+alias windows='sudo grub2-reboot "Windows Boot Manager (on /dev/nvme0n1p1)" && reboot'
+
+# zen browser
+export PATH="$HOME/.local/share/zen:$PATH"
+
+# local projects
+alias kansu='python ~/Projects/kansu/src/cli/main.py'
+alias lyrcli='python3 ~/Projects/lyrcli/src/main.py'

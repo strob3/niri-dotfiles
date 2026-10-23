@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+# fedora storage cleanup script
+# cleans package caches, unused flatpaks, journal logs,
+# and optionally user caches.
+
+echo "Storage before cleanup:"
+df -h /
+echo
+
+# dnf pkg cache
+if command -v dnf >/dev/null 2>&1; then
+    if confirm "Clean DNF caches?"; then
+        sudo dnf clean all
+    fi
+fi
+
+# unused flatpak runtimes
+if command -v flatpak >/dev/null 2>&1; then
+    if confirm "Remove unused Flatpak runtimes?"; then
+        flatpak uninstall --unused
+        sudo flatpak uninstall --system --unused 2>/dev/null || true
+    fi
+fi
+
+# system journal logs
+if command -v journalctl >/dev/null 2>&1; then
+    echo
+    journalctl --disk-usage
+    if confirm "Keep only the last 7 days of archived system logs?"; then
+        sudo journalctl --vacuum-time=7d
+    fi
+fi
+
+# unneeded dnf dependencies
+if command -v dnf >/dev/null 2>&1; then
+    if confirm "Run DNF autoremove? Review the proposed package list carefully."; then
+        sudo dnf autoremove
+    fi
+fi
+
+# user cache
+if [[ -d "$HOME/.cache" ]]; then
+    du -sh "$HOME/.cache" 2>/dev/null || true
+    if confirm "Delete all contents of ~/.cache?"; then
+        find "$HOME/.cache" -mindepth 1 -maxdepth 1 \
+            -exec rm -rf -- {} +
+        echo "User cache cleaned."
+    fi
+fi
+
+echo
+echo "Done"
+echo
+echo "Storage after cleanup:"
+df -h /
+echo
+echo "Remaining largest home directories:"
+du -h --max-depth=1 "$HOME" 2>/dev/null |
+    sort -h |
+    tail -10

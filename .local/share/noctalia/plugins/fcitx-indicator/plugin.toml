@@ -1,10 +1,12 @@
+# local plugin for noctalia bar that displays current fcitx input mode.
+
 id = "local/fcitx-indicator"
 name = "Fcitx Indicator"
 version = "1.0.0"
 plugin_api = 24
 author = "local"
 license = "MIT"
-description = "displays fcitx5 input state in the noctalia bar"
+description = "Displays fcitx5 input state in the noctalia bar"
 tags = ["indicator", "input"]
 
 [[widget]]

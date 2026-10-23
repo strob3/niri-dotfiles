@@ -108,6 +108,7 @@ overview {
 // startups
 //spawn-at-startup "fcitx5" // keyboard language switcher
 spawn-at-startup "noctalia"
+spawn-at-startup "~/.local/bin/switch-bar" "--init"
 
 
 // wayland

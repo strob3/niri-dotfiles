@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# script for switching bar configs in noctalia
+# script binded to Mod+Ctrl+B in .config/niri/ext/binds.kdl
+
+set -euo pipefail
+
+BARS=("default" "full-size" "side")
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/noctalia"
+STATE_FILE="$STATE_DIR/active-bar"
+
+mkdir -p "$STATE_DIR"
+
+CURRENT="default"
+if [[ -f "$STATE_FILE" ]]; then
+    CURRENT="$(cat "$STATE_FILE")"
+fi
+
+if [[ "${1:-}" == "--init" ]]; then
+    for _ in {1..30}; do
+        if noctalia msg status &>/dev/null; then
+            break
+        fi
+        sleep 0.2
+    done
+    TARGET="$CURRENT"
+else
+    NEXT_INDEX=0
+    for i in "${!BARS[@]}"; do
+        if [[ "${BARS[$i]}" == "$CURRENT" ]]; then
+            NEXT_INDEX=$(((i + 1) % ${#BARS[@]}))
+            break
+        fi
+    done
+    TARGET="${BARS[$NEXT_INDEX]}"
+fi
+
+for bar in "${BARS[@]}"; do
+    if [[ "$bar" != "$TARGET" ]]; then
+        noctalia msg bar-hide "$bar"
+    fi
+done
+
+noctalia msg bar-show "$TARGET"
+
+printf '%s\n' "$TARGET" > "$STATE_FILE"

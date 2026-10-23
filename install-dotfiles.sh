@@ -4,22 +4,11 @@ set -euo pipefail
 DOTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BAKDIR="$HOME/.dotfiles.bak/$(date +%Y%m%d_%H%M%S)"
 
-# directories under ~/.config to link
-CONFIG_DIRS=(
-    "fastfetch"
-    "kitty"
-    "niri"
-    "noctalia"
-    "rofi"
-    "yazi"
-    "zsh"
-    "nvim"
-)
-
 # custom relative paths: "source_rel:dest_abs"
+# paths outside of .config
 CUSTOM_LINKS=(
     ".local/share/noctalia:$HOME/.local/share/noctalia"
-    "Pictures/Wallpapers:$HOME/Pictures/Wallpapers"
+    ".gitconfig:$HOME/.gitconfig"
 )
 
 # helper functions
@@ -49,12 +38,24 @@ link_item() {
     echo "--> Linked: $dest -> $src"
 }
 
-# run
+# 1. link ~/.config directories automatically
 echo "==> Linking ~/.config directories..."
-for dir in "${CONFIG_DIRS[@]}"; do
-    link_item "$DOTDIR/.config/$dir" "$HOME/.config/$dir"
+for src in "$DOTDIR/.config"/*; do
+    [ -e "$src" ] || continue
+    link_item "$src" "$HOME/.config/$(basename "$src")"
 done
 
+# 2. link ~/.local/bin scripts automatically
+if [ -d "$DOTDIR/.local/bin" ]; then
+    echo "==> Linking ~/.local/bin scripts..."
+    mkdir -p "$HOME/.local/bin"
+    for src in "$DOTDIR/.local/bin"/*; do
+        [ -e "$src" ] || continue
+        link_item "$src" "$HOME/.local/bin/$(basename "$src")"
+    done
+fi
+
+# 3. link custom paths
 echo "==> Linking custom paths..."
 for entry in "${CUSTOM_LINKS[@]}"; do
     src_rel="${entry%%:*}"
@@ -62,9 +63,20 @@ for entry in "${CUSTOM_LINKS[@]}"; do
     link_item "$DOTDIR/$src_rel" "$dest_abs"
 done
 
-# ensure ~/.zshrc points to .config/zsh/.zshrc if zsh config exists
-if [ -f "$HOME/.config/zsh/.zshrc" ]; then
-    link_item "$HOME/.config/zsh/.zshrc" "$HOME/.zshrc"
+# 4. zsh via ZDOTDIR (~/.zshenv)
+if [ -d "$DOTDIR/.config/zsh" ]; then
+    echo "==> Configuring Zsh via ZDOTDIR..."
+    link_item "$DOTDIR/.zshenv" "$HOME/.zshenv"
+
+    # clean legacy symlinks in $HOME if pointing to .config/zsh
+    if [ -L "$HOME/.zshrc" ] && [ "$(readlink -f "$HOME/.zshrc")" = "$(readlink -f "$DOTDIR/.config/zsh/.zshrc")" ]; then
+        rm "$HOME/.zshrc"
+        echo "--> Removed legacy symlink: $HOME/.zshrc (now handled by ZDOTDIR)"
+    fi
+    if [ -L "$HOME/.p10k.zsh" ] && [ "$(readlink -f "$HOME/.p10k.zsh")" = "$(readlink -f "$DOTDIR/.config/zsh/.p10k.zsh")" ]; then
+        rm "$HOME/.p10k.zsh"
+        echo "--> Removed legacy symlink: $HOME/.p10k.zsh (now loaded from ZDOTDIR)"
+    fi
 fi
 
 echo "==> Dotfiles setup complete."
