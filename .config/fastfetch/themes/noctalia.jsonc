@@ -1,20 +1,20 @@
 {
   "logo": {
     "color": {
-      "1": "#9da6b6",
-      "2": "#9fa2b4"
+      "1": "#7a88cf",
+      "2": "#d7729f"
     }
   },
   "display": {
     "color": {
-      "keys": "#9da6b6",
-      "title": "#9fa2b4"
+      "keys": "#7a88cf",
+      "title": "#d7729f"
     },
     "percent": {
       "color": {
-        "green": "#a4a1b2",
-        "yellow": "#b6bdc9",
-        "red": "#fd4663"
+        "green": "#9cd58a",
+        "yellow": "#96a3e9",
+        "red": "#f7768e"
       }
     }
   }

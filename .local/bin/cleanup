@@ -6,6 +6,16 @@ set -Eeuo pipefail
 # cleans package caches, unused flatpaks, journal logs,
 # and optionally user caches.
 
+confirm() {
+    local prompt="${1:-Continue?} [y/N] "
+    local answer
+    read -r -p "$prompt" answer || return 1
+    case "$answer" in
+        [yY]|[yY][eE][sS]) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
 echo "Storage before cleanup:"
 df -h /
 echo
@@ -46,7 +56,7 @@ if [[ -d "$HOME/.cache" ]]; then
     du -sh "$HOME/.cache" 2>/dev/null || true
     if confirm "Delete all contents of ~/.cache?"; then
         find "$HOME/.cache" -mindepth 1 -maxdepth 1 \
-            -exec rm -rf -- {} +
+            -exec rm -rf -- {} + 2>/dev/null || true
         echo "User cache cleaned."
     fi
 fi
@@ -58,6 +68,6 @@ echo "Storage after cleanup:"
 df -h /
 echo
 echo "Remaining largest home directories:"
-du -h --max-depth=1 "$HOME" 2>/dev/null |
+{ du -h --max-depth=1 "$HOME" 2>/dev/null || true; } |
     sort -h |
     tail -10

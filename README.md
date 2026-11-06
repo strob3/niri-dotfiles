@@ -7,10 +7,6 @@ Personal dotfiles built around niri and noctalia.
 git clone https://github.com/strob3/niri-dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 
-# to include wallpaper repo
-git clone --recurse-submodules https://github.com/strob3/niri-dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-
 # run setup script
 ./setup.sh
 
@@ -76,3 +72,7 @@ mv ~/.gitconfig ~/.dotfiles/.gitconfig
 ## Keybinds
 
 `Mod + /` to display hotkey overlay script.
+
+## Wallpapers
+
+https://github.com/strob3/wallpapers
