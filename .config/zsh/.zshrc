@@ -11,9 +11,10 @@ source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # navigation 
-cd() {
-  builtin cd "$@" && eza -a --icons=auto --group-directories-first
+chpwd() {
+  eza -a --icons=auto --group-directories-first
 }
+
 alias dot='cd ~/.dotfiles'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -44,6 +45,9 @@ alias fdd='fd -t d'        # directories only
 # clipboard (wayland) 
 alias c='wl-copy'
 alias p='wl-paste'
+
+# disk usage
+alias dus='du -sh .[^.]* * 2>/dev/null | sort -hr'        # show hidden & sort by size
 
 # editor & quick edits 
 alias nv='nvim'

@@ -1,6 +1,6 @@
-[user]
-	name = strob3
-	email = 85436904+strob3@users.noreply.github.com
+#[user]
+#	name = 
+#	email =
 [core]
 	pager = delta
 [interactive]

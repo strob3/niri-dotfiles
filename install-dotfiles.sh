@@ -8,7 +8,7 @@ BAKDIR="$HOME/.dotfiles.bak/$(date +%Y%m%d_%H%M%S)"
 # paths outside of .config
 CUSTOM_LINKS=(
     ".local/share/noctalia:$HOME/.local/share/noctalia"
-    ".gitconfig:$HOME/.gitconfig"
+    # ".gitconfig:$HOME/.gitconfig"
 )
 
 # helper functions

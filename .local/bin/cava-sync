@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+THEME="${1:-noctalia}"
+THEME_FILE="$HOME/.config/cava/themes/$THEME"
+CONFIG_FILE="$HOME/.config/cava/config"
+
+if [[ ! -f "$THEME_FILE" ]]; then
+    echo "Theme '$THEME' not found in ~/.config/cava/themes/" >&2
+    exit 1
+fi
+
+# Strip existing [color] block to end of file, then append theme
+sed -i '/^\[color\]/,$d' "$CONFIG_FILE"
+cat "$THEME_FILE" >> "$CONFIG_FILE"
+
+pkill -USR1 cava 2>/dev/null || true
+echo "Applied '$THEME' to cava."

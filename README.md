@@ -71,7 +71,7 @@ mv ~/.gitconfig ~/.dotfiles/.gitconfig
 
 ## Keybinds
 
-`Mod + /` to display hotkey overlay script.
+<kbd>Mod</kbd> + <kbd>/</kbd> to display hotkey overlay script.
 
 ## Wallpapers
 

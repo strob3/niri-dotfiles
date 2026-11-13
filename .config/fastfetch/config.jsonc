@@ -3,17 +3,17 @@
   "logo": {
     "type": "kitty-direct",
     "source": "~/.config/fastfetch/assets/patchouli-fumo.png",
-    "width": 24,
-    "height": 12,
+    "width": 22,
+    "height": 11,
     "preserveAspectRatio": true,
     "padding": {
-      "top": 5,
-      "right": 4,
+      "top": 4,
+      "right": 3,
       "left": 1
     },
     "color": {
-      "1": "#63cafd",
-      "2": "#63c8de"
+      "1": "#f563e7",
+      "2": "#fab363"
     }
   },
   "display": {
@@ -22,20 +22,18 @@
       "width": 12
     },
     "color": {
-      "keys": "#9fcafd",
-      "title": "#b8c8de",
-      "separator": "#666666"
+      "keys": "#f5c2e7",
+      "title": "#f5c2e7"
     },
     "percent": {
       "color": {
-        "green": "#e9b5ef",
-        "yellow": "#9fcafd",
-        "red": "#ffb4ab"
+        "green": "#94e2d5",
+        "yellow": "#ed91d4",
+        "red": "#f38ba8"
       }
     }
   },
   "modules": [
-    "break",
     "break",
     {
       "type": "title",
@@ -45,47 +43,44 @@
     {
       "type": "os",
       "key": "󰌢  OS",
-      "format": "{pretty-name}"
+      "format": "{name} {version-id}"
     },
     {
-      "type": "kernel",
+      "type": "command",
       "key": "  Kernel",
-      "format": "{release}"
-    },
-    {
-      "type": "uptime",
-      "key": "󰥔  Uptime"
+      "text": "uname -r | cut -d- -f1"
     },
     {
       "type": "packages",
       "key": "󰏖  Pkgs",
-      "format": "{rpm} rpm · {flatpak-all} flatpak"
+      "format": "{rpm} rpm / {flatpak-all} flatpak"
     },
     "break",
     {
       "type": "wm",
-      "key": "  WM"
-      //"format": "{pretty-name}" //· {protocol-name}"
+      "key": "  WM",
+      "format": "{pretty-name}"
     },
     {
       "type": "shell",
-      "key": "  Shell"
+      "key": "  Shell",
+      "format": "{pretty-name}"
     },
     {
       "type": "terminal",
-      "key": "  Term"
+      "key": "  Term",
+      "format": "{pretty-name}"
     },
     "break",
     {
-      "type": "command",
-      "key": "󰅐  OS age",
-      "text": "echo \"$(( ($(date +%s) - $(stat -c %W /)) / 86400 )) days\""
+      "type": "uptime",
+      "key": "󰥔  Uptime",
+      "format": "{?days}{days}d {?}{hours}h {minutes}m"
     },
     {
-      "type": "gpu",
-      "key": "󰢮  GPU",
-      "hideType": "integrated",
-      "format": "{name}"
+      "type": "command",
+      "key": "󰅐  OS age",
+      "text": "echo \"$(( ($(date +%s) - $(stat -c %W /)) / 86400 ))d\""
     },
     {
       "type": "memory",
@@ -98,16 +93,10 @@
       "folders": "/",
       "format": "{size-used} / {size-total}"
     },
-    {
-      "type": "battery",
-      "key": "󰁹  Battery",
-      "format": "{capacity} · {status}"
-    },
     "break",
     {
-      "type": "custom",
-      "format": "\u001b[38;2;206;214;223m●  \u001b[38;2;154;177;203m●  \u001b[38;2;147;150;200m●  \u001b[38;2;164;204;209m●  \u001b[38;2;145;153;161m●\u001b[0m"
-    },
-    "break"
+      "type": "colors",
+      "symbol": "circle"
+    }
   ]
 }

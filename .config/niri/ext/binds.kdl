@@ -3,7 +3,7 @@ binds {
     Mod+Slash hotkey-overlay-title="show hotkeys cheatsheet" { spawn "~/.config/niri/scripts/hotkeys.sh"; }
 
     // Programs
-    Mod+T hotkey-overlay-title="spawn kitty" { spawn "kitty"; }
+    Mod+T hotkey-overlay-title="spawn ghostty" { spawn "ghostty"; }
     Mod+Space hotkey-overlay-title="spawn rofi" { spawn-sh "pkill rofi || rofi -show drun -theme ~/.config/rofi/theme.rasi"; }
     Mod+C hotkey-overlay-title="spawn vs code" { spawn "code"; }
     Mod+E hotkey-overlay-title="spawn nautilus" { spawn "nautilus"; }
@@ -16,6 +16,7 @@ binds {
     Mod+W repeat=true hotkey-overlay-title="spawn wallpaper picker" { spawn "noctalia" "msg" "panel-toggle" "ashur-d/wallpaper-widget:hub"; }
     Mod+Shift+B hotkey-overlay-title="toggle bar" { spawn "noctalia" "msg" "bar-toggle"; }
     Mod+X hotkey-overlay-title="spawn session menu" { spawn "noctalia" "msg" "panel-toggle" "session"; }
+    Alt+4 hotkey-overlay-title="spawn session menu" { spawn "noctalia" "msg" "panel-toggle" "session"; }
     Mod+Shift+N hotkey-overlay-title="spawn notes" { spawn "noctalia" "msg" "panel-toggle" "noctalia/notes:panel"; } 
     Mod+V hotkey-overlay-title="spawn clipboard" { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
     Mod+D hotkey-overlay-title="toggle desktop widgets on & bar off" { spawn "sh" "-c" "noctalia msg desktop-widgets-toggle; noctalia msg bar-toggle"; }
